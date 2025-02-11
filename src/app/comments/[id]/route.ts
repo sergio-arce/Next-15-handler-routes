@@ -8,3 +8,15 @@ export async function GET(req: Request, { params }: { params: Promise<{ id: stri
 
   return Response.json(comment)
 }
+
+export async function PATCH(req: Request, { params }: { params: Promise<{ id: string }>}) {
+
+  const { id } = await params
+  const { text } = await req.json()
+
+  const index = comments.findIndex((comment) => comment.id === parseInt(id))
+  comments[index].text = text
+
+  return Response.json(comments[index])
+
+}
