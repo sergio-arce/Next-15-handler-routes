@@ -12,9 +12,8 @@ export async function POST(req: Request) {
     id: comments.length + 1,
     text: comment.text
   }
+  
   comments.push(newComment)
-
-  console.log(comments)
 
   return new Response(JSON.stringify(newComment), {
     headers: { "Conten-Type": "application/json" },
